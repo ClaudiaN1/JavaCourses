@@ -84,6 +84,7 @@ public class ArrayPractice {
         // 2
         System.out.println("\nNegative numbers:" +
                 Arrays.toString(getNegativNumbers(intArray)));
+        System.out.println("ARR neg len =" + getNegativNumbers(intArray).length);
 
         // 3
         System.out.println("\nNumbers bigger than 10:");

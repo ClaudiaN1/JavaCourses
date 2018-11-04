@@ -28,7 +28,7 @@ public class CollectionTest {
 
     }
 
-    private static void listTest() {
+   private static void listTest() {
         ArrayList<String> listOfStrings = new ArrayList<>();
         listOfStrings.add("first");
         listOfStrings.add("second");

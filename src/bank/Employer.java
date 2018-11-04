@@ -5,6 +5,7 @@ public enum Employer {
     CocaCola,
     IBM,
     Visma,
-    BRD;
+    BRD,
+    Unknow;
 
 }
