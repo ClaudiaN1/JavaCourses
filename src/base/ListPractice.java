@@ -1,9 +1,11 @@
 package base;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
-import static base.ArrayPractice.*;  // importam var, met din ArrayPractice
+import static base.ArrayPractice.*;
 
 
 /* REQUIREMENTS:
@@ -20,20 +22,21 @@ c) list.forEach(Consumer)
 */
 
 
-public class ListPractice {
+public class ListPractice{
 
 
     public static void main(String[] args) {
 
         // 0
-        Integer[] intArray = {2, 3, 4, 7, 99, 4, 120, 111, -5, -99, 55, 13, 29, 1, 0};
-        List<Integer> integerList = Arrays.asList(intArray);
-        System.out.println(" List : " + integerList);
+        /*Integer[] intArray =  { 2, 3, 4, 7, 99, 4, 120, 111, -5, -99, 55, 13, 29, 1, 0 };
+        List<Integer> integerList = Arrays.asList(intArray);*/
 
-        //////////////////////////////////////  SAU ////////////////////////////////
-        //  List<Integer> integerList =   Arrays.asList( 2, 3, 4, 7, 99, 4, 120,
-        //                                               111, -5, -99, 55, 13, 29, 1, 0);
+        List<Integer> integerList = Arrays.asList(
+                2, 3, 4, 7, 99, 4, 120, 111,
+                -5, -99, 55, 13, 29, 1, 0);
 
+
+        System.out.println("List: " + integerList);
 
         // 1
         System.out.println("\nEven numbers:");
@@ -70,16 +73,17 @@ public class ListPractice {
     }
 
 
+
     public static void printEvenNumbers(List<Integer> integerList) {
         // 1
         for (int i = 0; i < integerList.size(); i++) {
 
             int currentElement = integerList.get(i);
 
-            if (currentElement % 2 == 0) {
-                System.out.println(currentElement);
+            if(isEven(currentElement)){
+                 System.out.println(currentElement);
+             }
 
-            }
         }
     }
 
@@ -90,54 +94,43 @@ public class ListPractice {
 
             int currentElement = integerList.get(i);
 
-           //if (currentElement % 2 != 0) {
-            /////////////SAU//////////////
-            if( isOdd(integerList.get(i))){
+            if(isOdd(currentElement)){
                 System.out.println(currentElement);
-
             }
         }
     }
 
 
-    private static int sum(List<Integer> integerList) {
+    public static int sum(List<Integer> integerList) {
         // 3
-
-        int sum =0;
+        int sum = 0;
         for (int i = 0; i < integerList.size(); i++) {
+
             sum += integerList.get(i);
+
         }
         return sum;
     }
 
 
-
     public static void printNumbersAtOddIndexes(List<Integer> integerList) {
         // 4
         for (int i = 0; i < integerList.size(); i++) {
-             if( i % 2 != 0  )
-             {
-                 System.out.println(integerList.get(i));
-             }
-        }
-    }
-
-
-    public static void  printNegativeNumbers(List<Integer> integerList) {
-        // 5
-
-
-        for (int i = 0; i < integerList.size(); i++) {
-
-            int currentElem = integerList.get(i);
-            if ( currentElem < 0 )
-            {
-                System.out.println(currentElem);
+            if(! isEven(i)){
+                System.out.println(integerList.get(i));
             }
         }
-
     }
 
+
+    public static void printNegativeNumbers(List<Integer> integerList) {
+        // 5
+        for(int element : integerList){
+            if(element < 0){
+                System.out.println(element);
+            }
+        }
+    }
 
 
     public static void printNumbersBiggerThan10(List<Integer> integerList) {
@@ -145,17 +138,13 @@ public class ListPractice {
     }
 
 
-
     public static float average(List<Integer> integerList) {
         // 7
-     if( integerList.size() == 0 )
-     {
-         return 0;
-     }
-     return ( float) sum (integerList ) / integerList.size();
+        if(integerList.size() == 0){
+            return 0;
+        }
+        return (float) sum(integerList) / integerList.size();
     }
-
-
 
 
     public static float positiveElementsAverage(List<Integer> integerList) {

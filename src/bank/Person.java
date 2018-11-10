@@ -1,88 +1,243 @@
 package bank;
 
+import org.junit.jupiter.api.Test;
+import utils.FileUtils;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+<<<<<<< HEAD
+import java.util.Arrays;
+=======
 import java.util.Collections;
+>>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
+import java.util.Comparator;
 import java.util.List;
 
 public class Person {
 
+    public static final String separatoRegex = "\\s*(,|\\.|;|:)\\s*";
+
+    public static class CompareByName implements Comparator<Person> {
+
+        @Override
+        public int compare(Person a, Person b) {
+
+            return a.name.compareTo(b.name);
+        }
+    }
+
 
     private String name;
+
     private Employer employer;
+
     private String location;
 
 
     public Person(String name, Employer employer, String location) {
+
         this.name = name;
         this.employer = employer;
         this.location = location;
     }
 
+
+
     @Override
     public String toString() {
-        return String.format("\nName : %s\nEmployer : %s\nLocation: %s",
+
+        return String.format(
+                "\nName: %s\nEmployer: %s\nLocation: %s",
                 name,
-                employer,
+                employer.name(),
                 location);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Employer getEmployer() {
-        return employer;
-    }
-
-    public String getLocation() {
-        return location;
-    }
 
     public void setName(String name) {
         this.name = name;
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+
+    public Employer getEmployer() {
+        return employer;
+    }
+
+
+    public String getLocation() {
+        return location;
+    }
+
+
+<<<<<<< HEAD
+    public static Person stringToPerson(String text){  //convertim din string in persoana
+=======
     public static Person stringToPerson(String text) {
-        String[] textTokens = text.split("\\s*,\\s*");
+>>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
 
-        String name = textTokens[0];//.trim();
-        String location = textTokens[1];//.trim();
+        // text = "Anda, Bucuresti,   Visma"
+        String[] textTokens = text.split(separatoRegex);
+      // System.out.println(Arrays.toString(textTokens));
 
-        //Employer.Visma.name()--->return "Visma"
-        //Employer.valueOf("Visma")--->return Employer.Visma
-        Employer employer = Employer.valueOf(textTokens[2]);//.trim());
-    
-   /* String name = " " ;
-    Employer employer = Employer.Unknow;
-    String location = "";*/
+        String name = textTokens[0];
+        String location = textTokens[1];
+
+        // Employer.Visma.name() ---> returns "Visma"
+        // Employer.valueOf("Visma") ---> returns Employer.Visma
+        Employer employer = Employer.valueOf(textTokens[2]); // valueOf = se foloseste pentru a accesa enumeratia Employer
 
         return new Person(name, employer, location);
-
-
     }
 
-    public static List<String> fileLinesToList(String localFilePath) throws IOException {            //pun in fata lu string...
-        Path employerFullPath = FileUtiles.getLocalPath(
-                ResourcesDirectories.BankResources.name(),                  //getLocalPath(more)...celalate le sterg si le pun undeva in test
-                localFilePath);
-        List<String> fileLine = Files.readAllLines(employerFullPath);
-        for (String line : fileLine) {
-            if (line.isEmpty() == false)
-                System.out.println(line);
+
+    public static List<Person> fileToPersonList(String... more) throws IOException { // func care primeste path si scoate o lista de pers
+
+        List<String> fileLines = FileUtils.fileLinesToList(more); // citeste linie cu linie din path si le baga intr o lista
+
+        List<String> nonEmptyLines = FileUtils.extractNonEmptyLines(fileLines);
+
+        List<Person> personList = new ArrayList<>();
+
+<<<<<<< HEAD
+        for(String line : nonEmptyLines){ //filtram dupa liniile goale? adica scoate din lista spatiile goale
+=======
+        for (String line : nonEmptyLines) {
+>>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
+
+            Person currentPerson = stringToPerson(line);
+            personList.add(currentPerson);
         }
 
-        return Collections.emptyList();
+        return personList;
     }
 
 
-    public static void main(String[] args) {
-        String text = " Anda , Bucuresti , Visma";
+    private static List<Person> getEmployees(List<Person> personList, String location) { // filtru//adauga in lista dupa locatie ?
 
-        System.out.println(stringToPerson(text));
+        List<Person> BucurestiEmployees = new ArrayList<>();
+
+        for (Person person : personList) {
+
+<<<<<<< HEAD
+            if(person.location.equals(location)){
+                BucurestiEmployees.add(person);
+=======
+            if (person.location.equals(location)) {
+                timisoaraEmployees.add(person);
+>>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
+            }
+        }
+
+        return BucurestiEmployees;
     }
+
+
+    private static List<Person> getEmployees(List<Person> personList, Employer employer) {// filtru
+
+        List<Person> employees = new ArrayList<>();//
+
+        for (Person person : personList) {
+
+            if (person.employer.equals(employer)) {
+                employees.add(person);
+            }
+        }
+
+        return employees;
+    }
+
+
+    private static List<Person> getEmployees(  // filtru
+            List<Person> personList,
+            Employer employer,
+            String location) {
+
+        List<Person> employees = new ArrayList<>();
+
+        for (Person person : personList) {
+
+            if (person.employer.equals(employer) && person.location.equals(location)) {
+                employees.add(person);
+            }
+        }
+
+        return employees;
+    }
+
+
+    public static void main(String[] args) throws IOException {
+
+        List<Person> personList = fileToPersonList(
+                ResourcesDirectories.BankResources.name(),
+                "employees.csv");
+
+        List<Person> timisoaraEmployees = getEmployees(
+                personList,
+                "Bucuresti");
+
+        List<Person> employesFromVisma = getEmployees(
+                personList,
+                Employer.Visma);
+
+        List<Person> employesFromVismaTimisora = getEmployees(
+                personList,
+                Employer.Visma,
+                "Timisoara");
+
+
+        /*for(Person person : timisoaraEmployees){
+            System.out.println(person);
+        }*/
+
+        String finalText = "";
+        for (Person person : employesFromVismaTimisora) {
+            finalText += person.toString() + "\n";
+        }
+
+        System.out.println(finalText);   // ptr a adauga doar angajatii din timisoara
+
+        Path outFilePath = FileUtils.getLocalPath(
+                ResourcesDirectories.BankResources.name(),
+                "employeesFromVismaTimisoara.txt");
+
+<<<<<<< HEAD
+        Files.write(outFilePath, finalText.getBytes()); //.write ptr a le scrie pe toate intr o lista separata
+=======
+        Files.write(outFilePath, finalText.getBytes());
+
+
+        // SORT
+
+        System.out.println("\n*** Sorted ***");
+
+        List<Person> personListSorted = new ArrayList<>();
+        personListSorted.addAll(personList);
+
+        Collections.sort(
+
+                personListSorted,
+
+                new Comparator<Person>() {
+
+                    @Override
+                    public int compare(Person p1, Person p2) {
+                        return p1.getName().compareTo(p2.getName());
+                    }
+                });
+
+
+        personListSorted.forEach(System.out::println);
+>>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
+    }
+
 
 
 }

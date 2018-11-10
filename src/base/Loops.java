@@ -2,26 +2,35 @@ package base;
 
 public class Loops {
 
-    public Loops() {
-        System.out.println("Loops Constructor");
+
+    // constructor
+    public Loops(){
+
+        System.out.println("Loops constructor");
     }
 
-    public void printSimpleArray() {
 
 
-        int[] integerArray = new int[4];
+    // Instance method
+    public void printSimpleArray(){
 
-        integerArray[1] = 1;
-        integerArray[2] = 2;
-        integerArray[3] = 3;
-        integerArray[0] = 0;
+        int[] integersArray = new int[4];
 
-        for (int i = 0; i < integerArray.length; i++) {
-            System.out.println(integerArray[i]);
+        integersArray[0] = 0;
+        integersArray[1] = 1;
+        integersArray[2] = 2;
+        integersArray[3] = 3;
+
+        for(int i=0; i < integersArray.length; i++){
+            System.out.println(integersArray[i]);
         }
     }
 
-    public static String message() {
-        return " Loops ";
+
+    // Class method
+    public static String message(){
+
+        return "Loops message";
     }
 }
+
