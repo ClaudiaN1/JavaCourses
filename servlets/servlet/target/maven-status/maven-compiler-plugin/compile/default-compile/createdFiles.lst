@@ -1,0 +1,8 @@
+filters\AuthenticationFilter.class
+login\LogoutServlet.class
+test\UserActionServlet.class
+login\LoginServlet.class
+login\LoginUser.class
+test\UserServlet.class
+test\TestServlet.class
+forms\UserFormServlet.class
