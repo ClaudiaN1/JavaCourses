@@ -12,7 +12,7 @@ public class User {
     private String userName;
     private String password;
 
-    @OneToOne(mappedBy = "user")  //legatura dintre user si client
+    @OneToOne(mappedBy = "user")   
     private Client client;
 
     public User(){
