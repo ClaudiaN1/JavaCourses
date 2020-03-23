@@ -15,20 +15,18 @@ import static bank.Person.fileToPersonList;
 public class Homework {
 
 
-    public static void main(String[] args) throws IOException { // deserializare
+    public static void main(String[] args) throws IOException {
         //step 1
         //user.dir/BankResources/Homework/timisoara_employees.txt
 
 
-        List<Person> personList = fileToPersonList(                   // punem toata caiile pana ajungem la fiserulul dorit de noi
+        List<Person> personList = fileToPersonList(                 
                 ResourcesDirectories.BankResources.name(),
-                ResourcesDirectories.Homework.name(),                 //"Homework" sau mai putem sc ResourcesDirectories.Homework.name() .. cu conditia sa scriem in ResourcesDirectories Homework
+                ResourcesDirectories.Homework.name(),                
                 "timisoara_employees.txt");
-
-        // avem mai multi separatori si trebuie sa ii adaugam pe toti ..mergem in Person si completam acolo cu " \\s*(,| .|;| : )\\s*"
+        
         // personList.forEach(System.out::println);
-
-
+        
         //step 2 + 3
         int azetsCount = countEmployees(personList, Employer.Azets);
         String azetsStatistics = Employer.Azets.name() + ": " + azetsCount;
@@ -36,22 +34,18 @@ public class Homework {
         String statistics = "Timisoara IT companies employee statistics:\n" + getStatistics(personList);
         System.out.println(statistics);
 
-<<<<<<< HEAD
-=======
 
 import java.util.Arrays;
 
 
 public class Homework {
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
 
-        //statistica
+        //statistics
         Path outputFilePath = FileUtils.getLocalPath(
                 ResourcesDirectories.BankResources.name(),
                 ResourcesDirectories.Homework.name(),
                 "timisoara_employees_statistics.txt");
 
-<<<<<<< HEAD
         Files.write(outputFilePath, statistics.getBytes());
     }
 
@@ -64,7 +58,7 @@ public class Homework {
             }
         }
         return count;
-=======
+        
     public static void main(String[] args) {
         String text = "dog,cat,mouse";
 
@@ -72,7 +66,6 @@ public class Homework {
         System.out.println(Arrays.toString(textTokens));
         // implement flow here
         // put any additional functions also in this class
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
     }
 
     //step 3
