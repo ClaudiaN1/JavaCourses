@@ -29,7 +29,7 @@ public class MyCodeMongo {
         MongoClient mongoClient = new MongoClient("localhost", MongoClientOptions.builder().
                 codecRegistry(pojoCodecRegistry).build());
 
-        MongoDatabase database = mongoClient.getDatabase("user_db");   // daca nu avem user_db ni l creeaza el
+        MongoDatabase database = mongoClient.getDatabase("user_db");   
         database = database.withCodecRegistry(pojoCodecRegistry);
 
         collection = database.getCollection("user", User.class);
@@ -44,7 +44,7 @@ public class MyCodeMongo {
     }
 
     public void insertPOJO() {  //inseram
-        User user = new User(" M ", 3, new Address(" S1 ", " TM ", "123"));       //am creat un obiect
+        User user = new User(" M ", 3, new Address(" S1 ", " TM ", "123"));       
         collection.insertOne(user);   // l am inserat
     }
 
@@ -58,10 +58,10 @@ public class MyCodeMongo {
     }
 
     public void queryCollection() {
-        collection.find().forEach(printBlock);            //afiseaza toti user ii
+        collection.find().forEach(printBlock);           
 
         System.out.println("User din TM: ");
-        Object obj = collection.find(eq("address.city", "TM")).first();         //afisam pe cei care sunt din TM
+        Object obj = collection.find(eq("address.city", "TM")).first();         
         System.out.println(obj);
 
         System.out.println("Users with age > 5 ");
