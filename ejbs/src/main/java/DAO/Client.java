@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "user")        - aceste doua randuri se pun daca eu vreau sa denumesc altfel clasa din aplicatie , de ex tabela mea se numeste "user" , deci tot asa ii pun si numele clasei ca sa stie unde sa se duca
+//@Table(name = "user")       
 //public class AnotherUser{
 public class Client {
 
@@ -34,7 +34,7 @@ public class Client {
     private long age;
 
     @OneToOne
-    @JoinColumn(name = "user_id")      //legatura dintre client si user
+    @JoinColumn(name = "user_id")     
     private User user;
 
     public void calculateAge(){
