@@ -5,9 +5,9 @@ public class ParentClass {
     private String name;
     private int age;
 
- /*   public ParentClass() // poate fi si gol
-    {                      //daca nu sc aici un constructor default , at am nevoie
-        this.name="";      //sa scriu un constructor in fiecare clasa derivata
+ /*   public ParentClass() 
+    {                      
+        this.name="";      
         this.age= 0;
     }*/
 
