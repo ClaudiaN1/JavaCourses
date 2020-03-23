@@ -22,7 +22,7 @@ public class Test {
 
 
         //static
-        Learnable.learnJava(8);  //pentru ca este statica se apeleaza cu numele clasei.numele metodei
+        Learnable.learnJava(8);  
 
 
 
