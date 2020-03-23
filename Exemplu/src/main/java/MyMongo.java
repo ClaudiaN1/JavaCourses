@@ -28,7 +28,7 @@ public class MyMongo {
         Document doc = new Document("name", "MongoDB")
                 .append("type", "database")
                 .append("versions", Arrays.asList("v1", "v2", "v3"));
-        doc.append("info", new Document("x", 1).append("y", 2));   // info este valoarea , iar key este un nou document care are si el la randul sau o valoare si o cheie
+        doc.append("info", new Document("x", 1).append("y", 2));   
         collection.insertOne(doc);
     }
 
@@ -87,8 +87,8 @@ public class MyMongo {
 
 
     public void deleteDoc() {
-        collection.deleteOne(eq("i",110));    // am sters un document
-        DeleteResult deleteResult = collection.deleteMany(gte("i",100));    // am sters mai multe doc
+        collection.deleteOne(eq("i",110));    
+        DeleteResult deleteResult = collection.deleteMany(gte("i",100));    
         System.out.println(deleteResult.getDeletedCount());
     }
 
