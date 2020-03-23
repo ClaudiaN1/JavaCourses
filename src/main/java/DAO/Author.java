@@ -6,7 +6,7 @@ import javax.persistence.ManyToMany;
 import java.util.Objects;
 import java.util.Set;
 
-@Entity   // ptr ai sugera IJ ului ca avem deaface cu o baza de date
+@Entity  
 public class Author {
     @Id
     private int id;
