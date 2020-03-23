@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "user")        - aceste doua randuri se pun daca eu vreau sa denumesc altfel clasa din aplicatie , de ex tabela mea se numeste "user" , deci tot asa ii pun si numele clasei ca sa stie unde sa se duca
+//@Table(name = "user")        
 //public class AnotherUser{
 public class User {
 
