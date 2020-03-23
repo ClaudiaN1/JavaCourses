@@ -41,7 +41,7 @@ public interface FileUtils {
 
         for(String line : linesList){
 
-            if(false == line.isEmpty()){ // sterge liniile goale , at sare peste if si nu este adaugat in lista
+            if(false == line.isEmpty()){  
                 nonEmptyLinesList.add(line);
             }
         }
