@@ -8,11 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Arrays;
-=======
 import java.util.Collections;
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
 import java.util.Comparator;
 import java.util.List;
 
@@ -78,11 +75,10 @@ public class Person {
 
 
 <<<<<<< HEAD
-    public static Person stringToPerson(String text){  //convertim din string in persoana
-=======
-    public static Person stringToPerson(String text) {
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
+    public static Person stringToPerson(String text){  
 
+    public static Person stringToPerson(String text) {
+ 
         // text = "Anda, Bucuresti,   Visma"
         String[] textTokens = text.split(separatoRegex);
       // System.out.println(Arrays.toString(textTokens));
@@ -92,26 +88,23 @@ public class Person {
 
         // Employer.Visma.name() ---> returns "Visma"
         // Employer.valueOf("Visma") ---> returns Employer.Visma
-        Employer employer = Employer.valueOf(textTokens[2]); // valueOf = se foloseste pentru a accesa enumeratia Employer
+        Employer employer = Employer.valueOf(textTokens[2]);  
 
         return new Person(name, employer, location);
     }
 
 
-    public static List<Person> fileToPersonList(String... more) throws IOException { // func care primeste path si scoate o lista de pers
+    public static List<Person> fileToPersonList(String... more) throws IOException {  
 
-        List<String> fileLines = FileUtils.fileLinesToList(more); // citeste linie cu linie din path si le baga intr o lista
+        List<String> fileLines = FileUtils.fileLinesToList(more);  
 
         List<String> nonEmptyLines = FileUtils.extractNonEmptyLines(fileLines);
 
         List<Person> personList = new ArrayList<>();
 
-<<<<<<< HEAD
-        for(String line : nonEmptyLines){ //filtram dupa liniile goale? adica scoate din lista spatiile goale
-=======
-        for (String line : nonEmptyLines) {
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
-
+         for(String line : nonEmptyLines){  
+         for (String line : nonEmptyLines) {
+ 
             Person currentPerson = stringToPerson(line);
             personList.add(currentPerson);
         }
@@ -120,29 +113,25 @@ public class Person {
     }
 
 
-    private static List<Person> getEmployees(List<Person> personList, String location) { // filtru//adauga in lista dupa locatie ?
-
+    private static List<Person> getEmployees(List<Person> personList, String location) {  
         List<Person> BucurestiEmployees = new ArrayList<>();
 
         for (Person person : personList) {
 
-<<<<<<< HEAD
-            if(person.location.equals(location)){
+             if(person.location.equals(location)){
                 BucurestiEmployees.add(person);
-=======
-            if (person.location.equals(location)) {
+             if (person.location.equals(location)) {
                 timisoaraEmployees.add(person);
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
-            }
+             }
         }
 
         return BucurestiEmployees;
     }
 
 
-    private static List<Person> getEmployees(List<Person> personList, Employer employer) {// filtru
+    private static List<Person> getEmployees(List<Person> personList, Employer employer) { 
 
-        List<Person> employees = new ArrayList<>();//
+        List<Person> employees = new ArrayList<>();
 
         for (Person person : personList) {
 
@@ -154,8 +143,7 @@ public class Person {
         return employees;
     }
 
-
-    private static List<Person> getEmployees(  // filtru
+    private static List<Person> getEmployees(
             List<Person> personList,
             Employer employer,
             String location) {
@@ -202,20 +190,16 @@ public class Person {
             finalText += person.toString() + "\n";
         }
 
-        System.out.println(finalText);   // ptr a adauga doar angajatii din timisoara
+        System.out.println(finalText);  
 
         Path outFilePath = FileUtils.getLocalPath(
                 ResourcesDirectories.BankResources.name(),
                 "employeesFromVismaTimisoara.txt");
 
-<<<<<<< HEAD
-        Files.write(outFilePath, finalText.getBytes()); //.write ptr a le scrie pe toate intr o lista separata
-=======
-        Files.write(outFilePath, finalText.getBytes());
-
+         Files.write(outFilePath, finalText.getBytes());  
+         Files.write(outFilePath, finalText.getBytes());
 
         // SORT
-
         System.out.println("\n*** Sorted ***");
 
         List<Person> personListSorted = new ArrayList<>();
@@ -233,11 +217,6 @@ public class Person {
                     }
                 });
 
-
         personListSorted.forEach(System.out::println);
->>>>>>> 4f3e30440454c5e27dd436ca0a93db5c1528e50a
-    }
-
-
-
+     }
 }
