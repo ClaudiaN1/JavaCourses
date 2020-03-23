@@ -26,7 +26,7 @@ public class Test {
             e.printStackTrace();
         }*/
 
-        List<String> employeesLines = fileLineToList("employees.csv");                     //(undeva in test ii aici) ..si aduga BankResourece.name(), " employees.csv;
+        List<String> employeesLines = fileLineToList("employees.csv");                      
 
     }
 
@@ -37,7 +37,7 @@ public class Test {
     private static void testFileUtils() {
         final String USER_DIR = System.getProperty("user.dir");
 
-        System.out.println("User directory: " + USER_DIR);                              // pentru a ne afisa unde este fisieru principal learnJava;
+        System.out.println("User directory: " + USER_DIR);                              
         System.out.println();
 
 
