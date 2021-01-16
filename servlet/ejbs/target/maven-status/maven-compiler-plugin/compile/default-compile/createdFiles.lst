@@ -1,0 +1,6 @@
+facades\UserFacade.class
+DAO\Client.class
+facades\BaseFacade.class
+facades\ClientFacade.class
+DAO\Address.class
+DAO\User.class
