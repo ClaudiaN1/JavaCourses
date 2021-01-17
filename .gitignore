@@ -59,6 +59,9 @@ local.properties
 *.ids
 *.orig
 
+**/.idea/
+**/*.iml
+
 ######################
 # Visual Studio Code
 ######################
