@@ -49,10 +49,11 @@ public class User {
 
     public User(){}
 
-    public User(String name, String email, String country) {
+    public User(String name, String email, String country, LocalDate birthDate) {
         this.name = name;
         this.email = email;
         this.country = country;
+        this.birthDate = birthDate;
     }
 
     @Override

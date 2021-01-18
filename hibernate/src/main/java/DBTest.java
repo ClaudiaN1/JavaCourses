@@ -9,6 +9,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.time.LocalDate;
+
 public class DBTest {
     private SessionFactory sessionFactory;
 
@@ -22,8 +24,8 @@ public class DBTest {
     public void insertUser() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = new User("Larisa", "e@e.com", "RO");
-        session.persist(user);  //se pune in baza de date
+        User user = new User("Larisa", "e@e.com", "RO", LocalDate.now());
+        session.persist(user);
         transaction.commit();
         session.close();
     }
@@ -31,8 +33,9 @@ public class DBTest {
     public void updateUser() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.find(User.class, 1);
-        user.setName("M");
+        User user = session.find(User.class, 0);
+        user.setName("Maria");
+        session.update(user);
         transaction.commit();
         session.close();
     }
@@ -40,7 +43,7 @@ public class DBTest {
     public void deleteUser() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.find(User.class, 7);
+        User user = session.find(User.class, 1);
         session.delete(user);
         transaction.commit();
         session.close();
@@ -49,10 +52,10 @@ public class DBTest {
 
     public void testMerge() {
         Session session = sessionFactory.openSession();
-        DAO.User user = session.find(User.class, 1);
+        DAO.User user = session.find(User.class, 0);
         session.clear();
         Transaction t = session.beginTransaction();
-        user.setName("Flavia");
+        user.setName("Andrei");
         session.merge(user);
         t.commit();
         session.close();
@@ -61,8 +64,8 @@ public class DBTest {
     public void checkPostLoad() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.find(User.class, 1);
-        System.out.println("age = 29 " + user.getAge());
+        User user = session.find(User.class, 0);
+        System.out.println("age = 29, user id:  " + user.getAge());
         transaction.commit();
         session.close();
     }
@@ -70,7 +73,7 @@ public class DBTest {
     public void checkOneToOne() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.find(User.class, 1);
+        User user = session.find(User.class, 0);
         System.out.println("Address city: " + user.getAddress().getCity());
         transaction.commit();
         session.close();
@@ -79,9 +82,9 @@ public class DBTest {
     public void checkOneToMany() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.find(User.class, 1);
+        User user = session.find(User.class, 0);
         for (Book b : user.getBooks())
-            System.out.println("Get titlu " + b.getTitle());
+            System.out.println("Get title: " + b.getTitle());
         transaction.commit();
         session.close();
     }
@@ -90,17 +93,13 @@ public class DBTest {
     public void checkManyToMany() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.find(User.class,1);
-        for( Book b: user.getBooks())
-        {
-            for(Author a : b.getAuthors())
-            {
+        User user = session.find(User.class, 0);
+        for (Book b : user.getBooks()) {
+            for (Author a : b.getAuthors()) {
                 System.out.println(a.getName());
             }
         }
         transaction.commit();
         session.close();
     }
-
 }
-
