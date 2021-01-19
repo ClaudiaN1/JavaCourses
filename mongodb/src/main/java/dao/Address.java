@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 public class Address {
     private String street;

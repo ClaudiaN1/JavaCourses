@@ -1,5 +1,5 @@
-import DAO.Address;
-import DAO.User;
+import dao.Address;
+import dao.User;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
